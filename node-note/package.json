@@ -9,6 +9,8 @@
   "author": "Jin Yu Li",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "yarg": "^1.0.8",
+    "yargs": "^12.0.5"
   }
 }

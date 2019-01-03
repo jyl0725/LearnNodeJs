@@ -1,18 +1,25 @@
-console.log('starting app')
+console.log('starting app');
 
 const fs = require('fs');
-const os = require('os');
-const note = require('./note.js')
-const _ = require('lodash')
+const note = require('./note.js');
+const yargs = require('yargs')
+const _ = require('lodash');
 
-// let user = os.userInfo();
-// fs.appendFileSync('greeting.txt', `Hello ${user.username}! You are ${note.age}.`);
-//
-// let res = note.add(3, 7);
-// console.log(res)
+const argv = yargs.argv;
+let command = argv._[0];
 
-console.log(_.isString(true));
-console.log(_.isString('true'));
+console.log('process', process.argv);
+console.log('yargs', argv);
+console.log('Command', command)
 
-var filterArray = _.uniq(['Andrew', 'Andrew', '1', '1', '2', '2', '4'])
-console.log(filterArray)
+if(command === 'add'){
+  note.addNote(argv.title, argv.body)
+}else if(command === 'list'){
+  note.getAll();
+}else if(command === 'read'){
+  note.getNote(argv.title);
+}else if(command === 'remove'){
+  note.remove(title);
+}else{
+  console.log('Command not recongized')
+}
