@@ -13,7 +13,15 @@ console.log('yargs', argv);
 console.log('Command', command)
 
 if(command === 'add'){
-  note.addNote(argv.title, argv.body)
+  let noted = note.addNote(argv.title, argv.body);
+  if(noted){
+    console.log('Note created');
+    console.log('--');
+    console.log(`Title: ${noted.title}`);
+    console.log(`Body: ${noted.body}`);
+  }else{
+    console.log('Note title already exist');
+  }
 }else if(command === 'list'){
   note.getAll();
 }else if(command === 'read'){
