@@ -27,7 +27,9 @@ if(command === 'add'){
 }else if(command === 'read'){
   note.getNote(argv.title);
 }else if(command === 'remove'){
-  note.remove(title);
+  let noteRemoved = note.remove(argv.title);
+  let message = noteRemoved ? 'Note Removed' : 'You are trying to remove an non-existent note'
+  console.log(message)
 }else{
   console.log('Command not recongized')
 }
