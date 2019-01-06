@@ -12,20 +12,26 @@ console.log('process', process.argv);
 console.log('yargs', argv);
 console.log('Command', command)
 
+
+
 if(command === 'add'){
   let noted = note.addNote(argv.title, argv.body);
   if(noted){
     console.log('Note created');
-    console.log('--');
-    console.log(`Title: ${noted.title}`);
-    console.log(`Body: ${noted.body}`);
+    note.logNote(noted);
   }else{
     console.log('Note title already exist');
   }
 }else if(command === 'list'){
   note.getAll();
 }else if(command === 'read'){
-  note.getNote(argv.title);
+  singleNote = note.getNote(argv.title);
+  if(singleNote){
+    console.log('Note retrieved');
+    note.logNote(singleNote);
+  }else{
+    console.log(`Note doesn't exist`)
+  }
 }else if(command === 'remove'){
   let noteRemoved = note.remove(argv.title);
   let message = noteRemoved ? 'Note Removed' : 'You are trying to remove an non-existent note'
