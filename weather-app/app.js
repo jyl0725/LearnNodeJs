@@ -1,10 +1,32 @@
-const request = require('request');
 require('dotenv').load();
-const key = process.env.MY_API_KEY;
+const yargs = require('yargs');
+const geocode = require('./geocode/address');
+const weather = require('./weather/weather');
 
-request({
-  url: `https://maps.googleapis.com/maps/api/geocode/json?address=%2011%20broadway%20new%20york&key=${key}`,
-  json: true
-},(error, response, body) => {
-  console.log(body);
+const argv = yargs
+  .options({
+  a:{
+    describe: 'Address to fetch weather for',
+    demand: true,
+    alias: 'address',
+    string: true
+  }
+  })
+  .help()
+  .alias('help', 'h')
+  .argv;
+
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+  if(errorMessage) {
+    console.log(errorMessage);
+  }else{
+    console.log(results.address)
+    weather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
+      if(errorMessage){
+        console.log(errorMessage);
+      }else{
+        console.log(`It's currently ${weatherResults.temperature}. It feels like ${weatherResults.apparentTemperature}.`);
+      }
+    });
+  }
 });
