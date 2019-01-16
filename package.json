@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "#Objective Learn NodeJS through a series of small scale projects(with testing)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyl0725/LearnNodeJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyl0725/LearnNodeJs/issues"
+  },
+  "homepage": "https://github.com/jyl0725/LearnNodeJs#readme"
+}
