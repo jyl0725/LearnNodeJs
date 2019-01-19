@@ -5,7 +5,7 @@ let User = mongoose.model('User',{
     type: String,
     require: true,
     trim: true,
-    minlength: 1
+    minlength: 1,
   }
 })
 
